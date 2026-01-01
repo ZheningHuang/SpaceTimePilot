@@ -5,9 +5,8 @@
 
 
 <p align="center">
-  <a href="https://arxiv.org/abs/XXXX.XXXXX"><img src="https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg?style=flat-square" alt="arXiv"></a>
+  <a href="https://arxiv.org/abs/2512.25075"><img src="https://img.shields.io/badge/arXiv-2512.25075-b31b1b.svg?style=flat-square" alt="arXiv"></a>
   <a href="https://zheninghuang.github.io/Space-Time-Pilot/"><img src="https://img.shields.io/badge/Project%20Page-SpaceTimePilot-blue.svg?style=flat-square" alt="Project Page"></a>
-  <a href="https://www.youtube.com/watch?v=XXXX"><img src="https://img.shields.io/badge/Video-Presentation-yellow.svg?style=flat-square" alt="Video"></a>
 </p>
 
 
@@ -35,7 +34,7 @@
 ## News
 
 - <b>Code and datasets are under internal review, will be released soon once the procedure is finished.</b> 🚀📦
-- <b>[2025-12-31]</b> Our paper is now available on <a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv</a>! 🚀
+- <b>[2025-12-31]</b> Our paper is now available on <a href="https://arxiv.org/abs/2512.25075">arXiv</a>! 🚀
 
 ---
 
@@ -60,7 +59,7 @@ If you find this project useful for your research, please cite:
 @article{huang2025spacetimpilot,
   title={SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time},
   author={Huang, Zhening and Jeong, Hyeonho and Chen, Xuelin and Gryaditskaya, Yulia and Wang, Tuanfeng Y. and Lasenby, Joan and Huang, Chun-Hao},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  journal={arXiv preprint arXiv:2512.25075},
   year={2025}
 }
 ```
