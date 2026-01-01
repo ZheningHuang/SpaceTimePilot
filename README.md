@@ -3,9 +3,6 @@
   SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time
 </h1>
 
-<p align="center">
-  <b>ICCV 2025</b>
-</p>
 
 <p align="center">
   <a href="https://arxiv.org/abs/XXXX.XXXXX"><img src="https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg?style=flat-square" alt="arXiv"></a>
@@ -28,11 +25,7 @@
 </p>
 
 <p align="center">
-  <a href="assets/version_3.mp4">
-    <img src="assets/video-thumbnail.png" alt="SpaceTimePilot Teaser Video" width="600"/>
-  </a>
-  <br>
-  <i>▶️ Click to watch the teaser video</i>
+  <img src="assets/teaser.gif" alt="SpaceTimePilot Teaser Video" width="600"/>
 </p>
 
 <p align="center">
