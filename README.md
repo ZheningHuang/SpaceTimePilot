@@ -28,10 +28,11 @@
 </p>
 
 <p align="center">
-  <video width="600" autoplay loop muted playsinline>
-    <source src="assets/version_3.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <a href="assets/version_3.mp4">
+    <img src="assets/video-thumbnail.png" alt="SpaceTimePilot Teaser Video" width="600"/>
+  </a>
+  <br>
+  <i>▶️ Click to watch the teaser video</i>
 </p>
 
 <p align="center">
