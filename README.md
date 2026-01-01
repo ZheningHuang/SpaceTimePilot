@@ -41,7 +41,7 @@
 ## News
 
 - <b>Code and datasets are under internal review, will be released soon once the procedure is finished.</b> 🚀📦
-- <b>[2025-XX-XX]</b> Our paper is now available on <a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv</a>! 🚀
+- <b>[2025-12-31]</b> Our paper is now available on <a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv</a>! 🚀
 
 ---
 
