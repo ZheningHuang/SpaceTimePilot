@@ -33,8 +33,9 @@
 
 ## News
 
-- <b>Code and datasets are under internal review, will be released soon once the procedure is finished.</b> 🚀📦
-- <b>[2025-12-31]</b> Our paper is now available on <a href="https://arxiv.org/abs/2512.25075">arXiv</a>! 🚀
+- **[2026-03-22]** We release the inference code of SpaceTimePilot. Training code and datasets are coming soon. 🚀
+- **[2026-02-20]** SpaceTimePilot is accepted at CVPR 2026! 🎉
+- **[2025-12-31]** Our paper is now available on <a href="https://arxiv.org/abs/2512.25075">arXiv</a>! 📄
 
 ---
 
@@ -51,15 +52,147 @@
 **SpaceTimePilot** enables free movement along both the camera and time axes with full control over direction and speed, supporting bullet-time, slow motion, reverse playback, and mixed space–time trajectories.
 
 
+
+## 🛠️ Environment Setup 
+
+
+**Requirements:** Linux, GPU with 80 GB VRAM
+
+**Prerequisites:** [uv](https://docs.astral.sh/uv/getting-started/installation/) must be installed.
+
+```bash
+git clone https://github.com/ZheningHuang/SpaceTimePilot.git
+cd SpaceTimePilot
+
+# Create and activate a Python 3.10 virtual environment
+uv venv --python 3.10
+source .venv/bin/activate
+
+# Install the package and all dependencies
+uv pip install -e .
+```
+
+
+## Inference
+
+### 1. Download Checkpoint and Demo Data
+
+Download the Wan2.1 foundation model into `checkpoints/wan2.1/`:
+
+```bash
+mkdir -p checkpoints
+python spacetimepilot/wan/download_wan2.1.py
+```
+
+Download the SpaceTimePilot checkpoint into `checkpoints/`:
+
+```bash
+hf download zhening/SpaceTimePilot SpacetimePilot_1.3B_v1.ckpt --local-dir checkpoints
+```
+
+Download the example demo videos into `demo_videos/`:
+
+```bash
+hf download zhening/SpaceTimePilot --include "demo_videos/*" --local-dir .
+```
+
+---
+
+### 2. Single-Video Inference
+
+Run inference on a single video with your choice of temporal and camera control:
+
+```bash
+CUDA_VISIBLE_DEVICES="0" python single_video_test.py \
+    --video_path demo_videos/videos/video_53.mp4 \
+    --caption "The video features a man and a woman dancing on a street in an urban setting. \
+The man is wearing a beige suit with a white shirt and a dark tie, while the woman is dressed \
+in a red dress with white polka dots and red heels. They are performing a dance that involves \
+spins and coordinated steps. The background shows a row of buildings with classical architecture, \
+including large windows and ornate balconies. The sky is clear, suggesting it might be daytime. \
+There are no visible texts or subtitles within the frames provided." \
+    --temporal_control freeze_late \
+    --cam_type 9 \
+    --src_vid_cam demo_videos/src_cam/video_53_extrinsics.npy \
+    --ckpt checkpoints/SpacetimePilot_1.3B_v1.ckpt \
+    --output_dir ./results/single_test
+```
+
+**Using your own video:**
+
+```bash
+CUDA_VISIBLE_DEVICES="0" python single_video_test.py \
+    --video_path /path/to/your/video.mp4 \
+    --caption "Describe your video here" \
+    --temporal_control freeze_mid \
+    --cam_type 9 \
+    --ckpt checkpoints/SpacetimePilot_1.3B_v1.ckpt \
+    --output_dir ./results/my_video
+```
+
+> `--src_vid_cam` is optional. If omitted, the model uses a default identity camera embedding.
+
+**Available temporal modes:**
+
+| Mode | Description |
+|------|-------------|
+| `forward` | Forward playback |
+| `reverse` | Reverse playback |
+| `pingpong` | Plays forward from frame 40, then reverses back |
+| `bounce_early` | Forward 20→80, then back to 60 |
+| `bounce_late` | Forward 60→80, then back to 20 |
+| `slowmo_first_half` | Slow motion of frames 0–40 |
+| `slowmo_second_half` | Slow motion of frames 40–80 |
+| `ramp_then_freeze` | Play 0→40, then freeze at frame 40 |
+| `freeze_start` | Bullet-time — freeze at frame 0 |
+| `freeze_early` | Bullet-time — freeze at frame 20 |
+| `freeze_mid` | Bullet-time — freeze at frame 40 |
+| `freeze_late` | Bullet-time — freeze at frame 60 |
+| `freeze_end` | Bullet-time — freeze at frame 80 |
+
+**Available camera trajectories:**
+
+| Index | Trajectory |
+|-------|-----------|
+| `1` | Pan Right |
+| `2` | Pan Left |
+| `3` | Tilt Up |
+| `4` | Tilt Down |
+| `5` | Zoom In |
+| `6` | Zoom Out |
+| `7` | Translate Up (with rotation) |
+| `8` | Translate Down (with rotation) |
+| `9` | Arc Left (with rotation) |
+| `10` | Arc Right (with rotation) |
+
+---
+
+### 3. Batch Inference on Demo Videos
+
+To run inference over all 61 demo videos with **Arc Left (cam 9)** and **bullet-time at frame 40 (`freeze_mid`)**:
+
+```bash
+python inference_batch.py \
+    --config config/inference/demo_fixed10_cam09.yaml \
+    -ckpt checkpoints/SpacetimePilot_1.3B_v1.ckpt \
+    --output_dir ./results/demo_freeze_mid_cam09
+```
+
+Results will be saved to `./results/demo_freeze_mid_cam09/`. To use a different temporal mode or camera, edit `config/inference/demo_fixed10_cam09.yaml` and change the `time_mode` and `test_cameras` fields.
+
+
+
 ## Citation
 
-If you find this project useful for your research, please cite:
+If you find this project useful for your research, please cite: -->
 
 ```bibtex
-@article{huang2025spacetimpilot,
+@inproceedings{huang2026spacetimopilot,
   title={SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time},
   author={Huang, Zhening and Jeong, Hyeonho and Chen, Xuelin and Gryaditskaya, Yulia and Wang, Tuanfeng Y. and Lasenby, Joan and Huang, Chun-Hao},
-  journal={arXiv preprint arXiv:2512.25075},
-  year={2025}
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
 }
 ```
+
+

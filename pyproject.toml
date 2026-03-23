@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spacetimepilot"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision",
+    "cupy-cuda12x",
+    "transformers==4.46.2",
+    "controlnet-aux==0.0.7",
+    "imageio[ffmpeg]",
+    "safetensors",
+    "einops",
+    "sentencepiece",
+    "protobuf",
+    "modelscope",
+    "ftfy",
+    "pandas",
+    "huggingface_hub",
+    "deepspeed",
+    "lightning",
+    "gradio",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]

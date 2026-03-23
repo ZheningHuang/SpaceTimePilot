@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.egg-info/
+
+# IDE / Tools
+.vscode/
+.claude/
+CLAUDE.md
+
+# Models & Checkpoints
+models/
+checkpoints/
+*.ckpt
+
+# Data & Datasets
+data_for_evaluation/
+evaluation_set/
+validation_set/
+dynamic_video_set/
+dynamic_validation_set/
+select_videos/
+videos_retimed/
+GT_processed/
+SSP/
+cape_test/
+
+# Results & Outputs
+results/
+results_backup/
+result_for_paper/
+evaluation/evaluation_results/
+evaluation/example_videos/
+log/
+wandb/
+
+# Attention Maps & Visualizations
+attention_map/
+attention_map_original/
+temporal_attention_maps/
+time_visulization/
+backup_tensor/
+backup/
+
+# External / Third-party
+third_party/
+evaluation/SpaTrackerV2/
+
+# Misc Local
+example_test_data/
+local_scripts/
+camera_videos_cropped/
+sep_8_ckpt/
+diffsynth.egg-info/
+checkpoints
+data_for_evaluation
+
+demo_videos
+hf.md
+spacetimepilot/requirements.txt
