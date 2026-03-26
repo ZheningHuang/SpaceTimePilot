@@ -65,6 +65,7 @@ git clone https://github.com/ZheningHuang/SpaceTimePilot.git
 cd SpaceTimePilot
 
 # Create and activate a Python 3.10 virtual environment
+curl -LsSf https://astral.sh/uv/install.sh | sh
 uv venv --python 3.10
 source .venv/bin/activate
 

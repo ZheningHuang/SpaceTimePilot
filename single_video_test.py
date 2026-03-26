@@ -44,6 +44,7 @@ from spacetimepilot.dataset.utils import (
 
 # ── Default paths ────────────────────────────────────────────────────────────
 
+
 DEFAULT_DIT_PATH  = "checkpoints/wan2.1/diffusion_pytorch_model.safetensors"
 DEFAULT_TEXT_PATH = "checkpoints/wan2.1/models_t5_umt5-xxl-enc-bf16.pth"
 DEFAULT_VAE_PATH  = "checkpoints/wan2.1/Wan2.1_VAE.pth"
