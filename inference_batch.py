@@ -12,7 +12,7 @@ import numpy as np
 import yaml
 from types import SimpleNamespace
 from spacetimepilot.utils.builder import build_pipeline, build_dataset
-from spacetimepilot.utils.misc import save_video, copy_training_files_locally, upload_file_to_s3, dict_to_namespace
+from spacetimepilot.utils.misc import save_video, dict_to_namespace
 import torch.utils.data
 from tqdm import tqdm
 import lightning as pl
@@ -164,11 +164,8 @@ if __name__ == '__main__':
         cfg.inference.ckpt_path = args.ckpt_path
     if args.output_dir is not None:
         cfg.inference.output_dir = args.output_dir
-    if args.start_from_last_frame is not None:
-        # Handle nested structure
-        if not hasattr(cfg.inference, 'start_from_last_frame'):
-            cfg.inference.start_from_last_frame = SimpleNamespace()
-        cfg.inference.start_from_last_frame.basic = args.start_from_last_frame
+    if args.start_from_last_frame:
+        cfg.inference.start_from_last = True
     
     
     print("#########################"*4)
