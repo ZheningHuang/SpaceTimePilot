@@ -32,6 +32,7 @@
 
 ## News
 
+- **[2026-04-15]** We release the evaluation datasets on <a href="https://huggingface.co/datasets/zhening/CamxTime">Hugging Face</a> and the full evaluation code! 📊
 - **[2026-03-22]** We release the inference code of SpaceTimePilot. Training code and datasets are coming soon. 🚀
 - **[2026-02-20]** SpaceTimePilot is accepted at CVPR 2026! 🎉
 - **[2025-12-31]** Our paper is now available on <a href="https://arxiv.org/abs/2512.25075">arXiv</a>! 📄
@@ -233,7 +234,7 @@ bash all_evaluation.sh
 ### Compute metrics
 
 ```bash
-source .venv/bin/activate && python eval/compute_metrics_camxtime.py \
+source .venv/bin/activate && python compute_metrics_camxtime.py \
   --pred_root results/moved_cam2moved_cam_extended \
   --gt_root CamxTime_eval/eval_gt_wan2.1_format \
   --output_dir results/camxtime_metrics
