@@ -189,23 +189,42 @@ We provide scripts to reproduce the quantitative results on the **Cam×Time eval
 
 ### Evaluation Dataset
 
-To evaluate the model, you will need to download the source videos, camera parameters, and metadata. You can choose to download the processed dataset only or include the heavy full-grid renders.
+The **Cam×Time** dataset is hosted on HuggingFace ([zhening/CamxTime](https://huggingface.co/datasets/zhening/CamxTime)) and consists of four zip archives (~5.55 GB total):
 
-### 1. Download Processed Evaluation Dataset (Recommended)
+| File | Contents |
+|---|---|
+| `eval_input.zip` | Source videos and camera parameters |
+| `eval_gt_wan2.1_format.zip` | Ground-truth videos (832×480, WAN 2.1 format) |
+| `eval_gt.zip` | Ground-truth pattern videos (1080×1080) |
+| `full_grid_renders.zip` | Full 120×120 camera×time grid renders |
+
+### 1. Download Full Dataset (Recommended)
+
+Download all four archives and extract them:
 
 ```bash
-hf download zhening/CamxTime --exclude "camxtime_evaluation_full_grid/*" --local-dir ./CamxTime_eval
+mkdir -p CamxTime_eval
+hf download zhening/CamxTime \
+    eval_input.zip eval_gt_wan2.1_format.zip eval_gt.zip \
+    --repo-type dataset --local-dir .
+unzip "*.zip"
+cd ..
+```
 
-### Run inference
+### 2. Download Lightweight Dataset (Skip Full-Grid Renders)
+
+If you want to access to the full gird rendering data, you can also add `full_grid_renders.zip`
+
 ```bash
+mkdir -p CamxTime_eval && cd CamxTime_eval
+huggingface-cli download zhening/CamxTime \
+    eval_input.zip eval_gt_wan2.1_format.zip eval_gt.zip \
+    --repo-type dataset --local-dir .
+unzip "*.zip"
+cd ..
+```
 
-If you require the full-grid renders
-
-```bash
-hf download zhening/CamxTime --local-dir ./CamxTime_eval
-```bash
-
-Then inference on the evaluation sets
+### Run Inference on Evaluation Sets
 
 ```bash
 bash all_evaluation.sh
