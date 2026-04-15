@@ -195,17 +195,15 @@ To evaluate the model, you will need to download the source videos, camera param
 
 ```bash
 hf download zhening/CamxTime --exclude "camxtime_evaluation_full_grid/*" --local-dir .
-
-### Run inference
-```bash
+```
 
 If you require the full-grid renders
 
 ```bash
 hf download zhening/CamxTime --local-dir .
-```bash
+```
 
-Then inference on the evaluation sets
+Then conduct the evaluation on Cam×Time evaluation datasets
 
 ```bash
 bash all_evaluation.sh
