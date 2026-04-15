@@ -193,6 +193,8 @@ To evaluate the model, you will need to download the source videos, camera param
 
 ### 1. Download Processed Evaluation Dataset (Recommended)
 
+Download from [Cam×Time dataset](https://huggingface.co/datasets/zhening/CamxTime):
+
 ```bash
 hf download zhening/CamxTime --exclude "camxtime_evaluation_full_grid/*" --local-dir .
 ```
