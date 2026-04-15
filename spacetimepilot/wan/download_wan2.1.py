@@ -16,3 +16,16 @@ for filename in [
         filename=filename,
         local_dir="checkpoints/wan2.1",
     )
+
+for filename in [
+    "special_tokens_map.json",
+    "spiece.model",
+    "tokenizer.json",
+    "tokenizer_config.json",
+]:
+    print(f"Downloading tokenizer file {filename}...")
+    hf_hub_download(
+        repo_id="google/umt5-xxl",
+        filename=filename,
+        local_dir="checkpoints/wan2.1/google/umt5-xxl",
+    )
