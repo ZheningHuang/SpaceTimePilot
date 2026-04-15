@@ -213,7 +213,7 @@ def main():
     )
     parser.add_argument("--pred_root",  default="results/moved_cam2moved_cam_extended")
     parser.add_argument("--gt_root",    default="CamxTime_eval/eval_gt_wan2.1_format")
-    parser.add_argument("--metadata",   default="metadata.csv")
+    parser.add_argument("--metadata",   default="CamxTime_eval/eval_input/metadata.csv")
     parser.add_argument("--output_dir", default="results/camxtime_metrics")
     parser.add_argument("--modes",      nargs="+", default=MODES)
     parser.add_argument("--device",     default="cuda" if torch.cuda.is_available() else "cpu")
