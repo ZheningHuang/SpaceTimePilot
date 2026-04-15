@@ -273,7 +273,7 @@ class ModelManager:
         torch_dtype=torch.float16,
         device="cuda",
         model_id_list: List[Preset_model_id] = [],
-        downloading_priority: List[Preset_model_website] = ["ModelScope", "HuggingFace"],
+        downloading_priority: List[Preset_model_website] = ["HuggingFace"],
         file_path_list: List[str] = [],
     ):
         self.torch_dtype = torch_dtype

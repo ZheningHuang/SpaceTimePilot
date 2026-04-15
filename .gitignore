@@ -1,16 +1,18 @@
 # Python
 __pycache__/
+*.py[cod]
 *.egg-info/
 
 # IDE / Tools
 .vscode/
 .claude/
 CLAUDE.md
+.venv
 
 # Models & Checkpoints
 checkpoints/
 *.ckpt
-
+CamxTime_eval
 # Data & Datasets
 data_for_evaluation/
 evaluation_set/
@@ -22,6 +24,18 @@ videos_retimed/
 GT_processed/
 SSP/
 cape_test/
+# Generated evaluation data (downloaded or produced by eval scripts)
+camxtime_evaluation_full_grid/
+camxtime_evaluation_gt/
+camxtime_evaluation_gt_preprocessed/
+evaluation/camxtime_metrics/
+
+# Misc local artefacts
+absolute_path.txt
+copy_scenes.sh
+moved_cam2moved_cam_extended/
+one_raw.png
+.cache/
 
 # Results & Outputs
 results/
@@ -39,10 +53,13 @@ temporal_attention_maps/
 time_visulization/
 backup_tensor/
 backup/
+evaluation_dataset
 
 # External / Third-party
 third_party/
 evaluation/SpaTrackerV2/
+processed_evaluation_videos
+moved_cam2moved_cam_extended
 
 # Misc Local
 example_test_data/
@@ -56,3 +73,5 @@ data_for_evaluation
 demo_videos
 hf.md
 spacetimepilot/requirements.txt
+camxtime_validation
+eval_gt_wan2.1_format

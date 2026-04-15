@@ -3,7 +3,6 @@
   SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time
 </h1>
 
-
 <p align="center">
   <a href="https://arxiv.org/abs/2512.25075"><img src="https://img.shields.io/badge/arXiv-2512.25075-b31b1b.svg?style=flat-square" alt="arXiv"></a>
   <a href="https://zheninghuang.github.io/Space-Time-Pilot/"><img src="https://img.shields.io/badge/Project%20Page-SpaceTimePilot-blue.svg?style=flat-square" alt="Project Page"></a>
@@ -182,6 +181,49 @@ python inference_batch.py \
 Results will be saved to `./results/demo_freeze_mid_cam09/`. To use a different temporal mode or camera, edit `config/inference/demo_fixed10_cam09.yaml` and change the `time_mode` and `test_cameras` fields.
 
 
+
+## Evaluation
+
+We provide scripts to reproduce the quantitative results on the **Cam×Time evaluation benchmark** (32 scenes, 5 temporal modes, moved-cam → moved-cam).
+
+
+### Evaluation Dataset
+
+To evaluate the model, you will need to download the source videos, camera parameters, and metadata. You can choose to download the processed dataset only or include the heavy full-grid renders.
+
+### 1. Download Processed Evaluation Dataset (Recommended)
+
+```bash
+hf download zhening/CamxTime --exclude "camxtime_evaluation_full_grid/*" --local-dir .
+
+### Run inference
+```bash
+
+If you require the full-grid renders
+
+```bash
+hf download zhening/CamxTime --local-dir .
+```bash
+
+Then inference on the evaluation sets
+
+```bash
+bash all_evaluation.sh
+```
+
+### Compute metrics
+
+```bash
+source .venv/bin/activate && python eval/compute_metrics_camxtime.py \
+  --pred_root results/moved_cam2moved_cam_extended \
+  --gt_root CamxTime_eval/eval_gt_wan2.1_format \
+  --output_dir results/camxtime_metrics
+```
+
+Outputs: `results.xlsx`, `summary.csv`, `per_video.csv`.
+
+
+---
 
 ## Citation
 

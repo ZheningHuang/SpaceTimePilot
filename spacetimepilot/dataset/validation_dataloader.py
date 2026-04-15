@@ -48,7 +48,8 @@ class InferenceDataset(torch.utils.data.Dataset):
         self.path = []
         self.cam_type = []
         self.video_idx = []
-        
+        self.file_name = []
+
         # all_cameras = list(range(1, 11))  # Cameras 1-10, adjust as needed
         all_cameras = [1]
 
@@ -58,6 +59,7 @@ class InferenceDataset(torch.utils.data.Dataset):
                 self.path.append(os.path.join(self.base_path, "videos", metadata["file_name"].iloc[video_idx]))
                 self.cam_type.append(cam_type)
                 self.video_idx.append(video_idx)
+                self.file_name.append(os.path.splitext(metadata["file_name"].iloc[video_idx])[0])
         
         print("this will process the following number of videos: ", len(self.path))
         self.src_camera_path = os.path.join(self.base_path, "src_cam")
@@ -265,7 +267,8 @@ class InferenceDataset(torch.utils.data.Dataset):
         # Add video and camera indices for proper multi-GPU handling
         data['video_idx'] = self.video_idx[data_id]
         data['cam_type'] = self.cam_type[data_id]
-        
+        data['file_name'] = self.file_name[data_id]
+
         return data
 
     def __len__(self):

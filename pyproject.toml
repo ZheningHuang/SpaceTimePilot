@@ -7,8 +7,8 @@ name = "spacetimepilot"
 version = "0.1.0"
 requires-python = ">=3.10"
 dependencies = [
-    "torch>=2.0.0",
-    "torchvision",
+    "torch==2.6.0",
+    "torchvision==0.21.0",
     "cupy-cuda12x",
     "transformers==4.46.2",
     "controlnet-aux==0.0.7",
@@ -17,9 +17,13 @@ dependencies = [
     "einops",
     "sentencepiece",
     "protobuf",
-    "modelscope",
     "ftfy",
+    "matplotlib",
+    "lpips",
     "pandas",
+    "openpyxl",
+    "scikit-image",
+    "Pillow",
     "huggingface_hub",
     "deepspeed",
     "lightning",
@@ -28,3 +32,12 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+torchvision = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true

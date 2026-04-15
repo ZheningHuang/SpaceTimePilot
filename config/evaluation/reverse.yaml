@@ -1,0 +1,31 @@
+pipeline_version: "spacetimepilot_1dconv"
+
+dataset:
+  type: "camxtime_identity_set"
+  data_path: "CamxTime_eval/eval_input"
+
+inference:
+  output_dir: "./results/moved_cam2moved_cam_extended/reverse"
+  ckpt_path: "checkpoints/SpacetimePilot_1.3B_v1.ckpt"
+  mode: "basic"
+  start_from_last: false
+  test_videos: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+  test_cameras: [0]
+  cfg_scale: 5.0
+  num_inference_steps: 50
+  seed: 0
+  tiled: True
+  camera_file: "camera_extrinsics.json"
+  time_mode: "reverse"
+  normalize_pose: false
+
+dataloader:
+  num_workers: 4
+  batch_size:
+    train: 2
+    val: 1
+
+models:
+  dit_path: "checkpoints/wan2.1/diffusion_pytorch_model.safetensors"
+  text_encoder_path: "checkpoints/wan2.1/models_t5_umt5-xxl-enc-bf16.pth"
+  vae_path: "checkpoints/wan2.1/Wan2.1_VAE.pth"

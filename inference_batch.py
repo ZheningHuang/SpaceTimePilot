@@ -124,8 +124,8 @@ class InferenceLightningModule(pl.LightningModule):
         source_video = source_video.to(dtype=torch.bfloat16, device=self.device)
         self.pipe.device = self.device
         
-        # Use the actual video and camera indices from the batch (not manual calculation)
-        actual_video_idx = batch["video_idx"].item() if hasattr(batch["video_idx"], 'item') else batch["video_idx"]
+        # Use the actual file name and camera index from the batch (not manual calculation)
+        actual_file_name = batch["file_name"][0] if isinstance(batch["file_name"], (list, tuple)) else batch["file_name"]
         actual_cam_idx = batch["cam_type"].item() if hasattr(batch["cam_type"], 'item') else batch["cam_type"]
 
         # Build pipeline call arguments
@@ -144,8 +144,8 @@ class InferenceLightningModule(pl.LightningModule):
         }
 
         video = self.pipe(**pipe_kwargs)
-        # Save video
-        filename = f"video_{actual_video_idx:02d}_cam_{actual_cam_idx:02d}.mp4"
+        # Save video using the source file name and camera index
+        filename = f"{actual_file_name}_cam_{actual_cam_idx:02d}.mp4"
         save_video(video, os.path.join(self.output_dir, filename), fps=30, quality=5)
 
         return {"processed": len(batch["text"])}
