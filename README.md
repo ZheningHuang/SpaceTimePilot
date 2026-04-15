@@ -125,6 +125,46 @@ python CamxTime_eval/preprocess_gt_videos.py \
 | `--workers N` | `min(32, ncpu)` | Parallel scene processes |
 | `--scenes s1 s2` | all | Limit to specific scenes |
 
+## Evaluation
+
+We provide scripts to reproduce the quantitative results on the **Cam×Time evaluation benchmark** (32 scenes, 5 temporal modes, moved-cam → moved-cam).
+
+
+### Evaluation Dataset
+
+To evaluate the model, you will need to download the source videos, camera parameters, and metadata. You can choose to download the processed dataset only or include the heavy full-grid renders.
+
+### 1. Download Processed Evaluation Dataset (Recommended)
+
+Download from [Cam×Time dataset](https://huggingface.co/datasets/zhening/CamxTime):
+
+```bash
+hf download zhening/CamxTime --exclude "camxtime_evaluation_full_grid/*" --local-dir ./CamxTime_eval
+```
+
+If you require the full-grid renders
+
+```bash
+hf download zhening/CamxTime --local-dir ./CamxTime_eval
+```
+
+Then conduct the evaluation on Cam×Time evaluation datasets
+
+```bash
+bash all_evaluation.sh
+```
+
+### Compute metrics
+
+```bash
+source .venv/bin/activate && python eval/compute_metrics_camxtime.py \
+  --pred_root results/moved_cam2moved_cam_extended \
+  --gt_root CamxTime_eval/eval_gt_wan2.1_format \
+  --output_dir results/camxtime_metrics
+```
+
+Outputs: `results.xlsx`, `summary.csv`, `per_video.csv`.
+
 Both scripts are **resumable** — already completed scenes are skipped automatically.
 
 ---
