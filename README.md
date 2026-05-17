@@ -6,6 +6,8 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2512.25075"><img src="https://img.shields.io/badge/arXiv-2512.25075-b31b1b.svg?style=flat-square" alt="arXiv"></a>
   <a href="https://zheninghuang.github.io/Space-Time-Pilot/"><img src="https://img.shields.io/badge/Project%20Page-SpaceTimePilot-blue.svg?style=flat-square" alt="Project Page"></a>
+  <a href="https://zheninghuang.github.io/camxtime_dataset/"><img src="https://img.shields.io/badge/Dataset-CamXTime-22d3ee.svg?style=flat-square" alt="CamXTime Dataset"></a>
+
 </p>
 
 
@@ -32,6 +34,7 @@
 
 ## News
 
+- **[2026-05-17]** The full **CamXTime** dataset is now available! Browse the <a href="https://zheninghuang.github.io/camxtime_dataset/">dataset page</a> and <a href="https://forms.office.com/r/TxKWUazrr8">request access via this Form</a>. 📦
 - **[2026-04-15]** We release the evaluation datasets on <a href="https://huggingface.co/datasets/zhening/CamxTime">Hugging Face</a> and the full evaluation code! 📊
 - **[2026-03-22]** We release the inference code of SpaceTimePilot. Training code and datasets are coming soon. 🚀
 - **[2026-02-20]** SpaceTimePilot is accepted at CVPR 2026! 🎉
@@ -253,7 +256,7 @@ If you find this project useful for your research, please cite: -->
 @inproceedings{huang2026spacetimopilot,
   title={SpaceTimePilot: Generative Rendering of Dynamic Scenes Across Space and Time},
   author={Huang, Zhening and Jeong, Hyeonho and Chen, Xuelin and Gryaditskaya, Yulia and Wang, Tuanfeng Y. and Lasenby, Joan and Huang, Chun-Hao},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) 2026},
   year={2026}
 }
 ```
